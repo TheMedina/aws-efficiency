@@ -1,37 +1,49 @@
-## Welcome to GitHub Pages
+## Welcome to TheMedina's AWS Efficiency Project!
 
-You can use the [editor on GitHub](https://github.com/TheMedina/aws-efficiency/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Join me as we implement tips and tricks on how to streamline AWS infrastructure design, development, and managment using code.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Goals
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+I'll be updating this project as much as possible. We'll go over everything from local EC2 bash solutions, to auto scaling with EFS, etc. How do we effectively local EC2 users? How do we manage their keys? What is a Bastion host? Let me walk you through it. Take a look at an example bash script I started including in all my EC2 instances to make local user account creation a breeze.
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+## Positional Paramater Variables
+#  This is so the function can read positional paramaters accurately
+USER=$1
+GROUP=$2
+## This function is the bulk of the non account creation / permission settings
+dir_routine () {
+    usermod -a -G $GROUP $USER
+    chown -R $USER:$USER /home/$USER/.ssh
+    chmod 600 /home/$USER/.ssh
+    touch /home/$USER/.ssh/authorized_keys
+    chown $USER:$USER /home/$USER/.ssh/authorized_keys
+    chmod 400 /home/$USER/.ssh/authorized_keys
+}
+if grep -iw "$1" /etc/passwd > /dev/null;then
+   echo "FAILED: User account already exist in /etc/passwd!"
+   exit 1
+else
+   echo "CREATING user account for $1"
+   useradd "$1"
+   mkdir /home/"$1"/.ssh
+ if grep -iw "$2" /etc/group > /dev/null;then
+    dir_routine
+ else
+    echo "WARNING: Group did not exist...CREATING group $2 !"
+    groupadd "$2"
+    dir_routine
+ fi
+ if [ $? -eq 0 ];then
+    echo "SUCCESS: Created user account $1"
+    exit 0
+ else
+    echo "FAILED: Unexpected error"
+    exit 2
+ fi
+fi
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/TheMedina/aws-efficiency/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+If you have any quetions or comments please feel free to contact me:
+medina@skillcappedgames.com
