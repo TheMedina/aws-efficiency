@@ -45,5 +45,4 @@ fi
 ```
 ### Support or Contact
 
-If you have any quetions or comments please feel free to contact me:
-medina@skillcappedgames.com
+If you have any quetions or comments please feel free to contact me at medina@skillcappedgames.com
