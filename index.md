@@ -3,7 +3,7 @@
 Join me as we implement tips and tricks on how to streamline AWS infrastructure design, development, and managment using code.
 
 # Updates
-04.05.2018 - Take a look at the work that my buddy [Keric and I did over at] (https://themedina.github.io/serverless-fun/)
+**04.05.2018 -** Take a look at the work that my buddy [Keric and I did over here!](https://themedina.github.io/serverless-fun/)
 
 ## Goals
 
