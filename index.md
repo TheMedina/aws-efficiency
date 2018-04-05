@@ -1,8 +1,11 @@
-## Welcome to TheMedina's AWS Efficiency Project!
+# Welcome to TheMedina's AWS Efficiency Project!
 
 Join me as we implement tips and tricks on how to streamline AWS infrastructure design, development, and managment using code.
 
-### Goals
+# Updates
+04.05.2018 - Take a look at the work that my buddy Keric and I did over at [https://themedina.github.io/serverless-fun/]
+
+## Goals
 
 I'll be updating this project as much as possible. We'll go over everything from local EC2 bash solutions, to auto scaling with EFS, etc. How do we effectively local EC2 users? How do we manage their keys? What is a Bastion host? Let me walk you through it. Take a look at an example bash script I started including in all my EC2 instances to make local user account creation a breeze.
 
@@ -43,6 +46,6 @@ else
  fi
 fi
 ```
-### Support or Contact
+## Support or Contact
 
-If you have any quetions or comments please feel free to contact me at medina@skillcappedgames.com
+If you have any questions or comments please feel free to contact me at  medina@skillcappedgames.com
